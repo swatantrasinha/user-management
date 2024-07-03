@@ -21,7 +21,6 @@ const User = ({userData, modifyUserData}:UserProps ) => {
             id:deleteId,
         };
         const response= await customFetch(fetchData);
-        console.log('deleteUserHandler --> response ', response);
         if(response.status !== 200) {
             setUserCardErrorMsg(response.data.toString());
         } else {

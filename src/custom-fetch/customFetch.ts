@@ -24,7 +24,6 @@ const customFetch = async (asyncData: any) => {
             status:number, 
             data: Error | UserCardProps | UserCardProps[]
         };
-        console.log('rawDataFromApi ', rawDataFromApi);
         
         
         if(rawDataFromApi.status === 200) {
@@ -41,7 +40,6 @@ const customFetch = async (asyncData: any) => {
             }
             responseFromApi = errorData;
         }
-        console.log('responseFromApi ', responseFromApi);
         return responseFromApi;
 }
 export default customFetch;

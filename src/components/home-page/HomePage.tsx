@@ -77,11 +77,12 @@ const HomePage = () => {
 
   return (
     <div className=''>
-        <div className="flex justify-center ">
-            <button className={`underline ${showLocationTable ? 'text-red-500' :'text-green-500'}`} onClick={() => setShowLocationTable(!showLocationTable)}>
+        {!state.error && (
+            <div className="flex justify-center ">
+                <button className={`underline ${showLocationTable ? 'text-red-500' :'text-green-500'}`} onClick={() => setShowLocationTable(!showLocationTable)}>
                  <span> {showLocationTable ? 'Hide' : 'Show'}</span> Users Based on Location
-            </button>
-        </div>
+                </button>
+        </div>)}
             {showLocationTable && (
                 <div className='border'>
                     {state.data && state.data.length && ( 
@@ -95,9 +96,9 @@ const HomePage = () => {
        
         <hr />
         <div className='grid sm:grid-cols-1 grid-cols-3 gap-x-2.5'>
-        {state.loading && (<div>Loading....</div>)}
-        {state.error && (<div>Some Error in Data Fetching....</div>)}
-        {state.data.length  && state.data.map((user: UserCardProps,index: number) => {
+            {state.loading && (<div>Loading....</div>)}
+            {state.error && (<div className='text-red-700'>Some Error in Data Fetching....</div>)}
+            {(state?.data?.length>0)  && state.data.map((user: UserCardProps,index: number) => {
             const uniqueKey= `${user.id}-${index}`;
             return (
                 <div key={uniqueKey} className='user-container border border-black my-8'>
